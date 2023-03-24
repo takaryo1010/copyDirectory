@@ -8,8 +8,8 @@ import (
 	"strings"
 )
 
-func check_copied_directory() error {
-	_, err := os.Stat("copied_directory")
+func check_original_directory() error {
+	_, err := os.Stat("original_directory")
 	if err != nil {
 		log.Println(err)
 		os.Exit(1)
@@ -19,12 +19,12 @@ func check_copied_directory() error {
 
 func make_directory_or_file(filename string) {
 	var new_path string
-	filepath.Walk("copied_directory", func(path string, info os.FileInfo, err error) error {
+	filepath.Walk("original_directory", func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return err
 		}
 
-		new_path = strings.Replace(path, "copied_directory", directory_name, -1)
+		new_path = strings.Replace(path, "original_directory", filename, -1)
 		if strings.Index(info.Name(), ".") == -1 {
 			err := os.MkdirAll(new_path, 0755)
 			if err != nil {

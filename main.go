@@ -20,7 +20,7 @@ func init() {
 }
 
 func main() {
-	check_copied_directory()
+	check_original_directory()
 	make_directory_or_file(directory_name)
 
 }
