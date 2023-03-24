@@ -25,7 +25,7 @@ func make_directory_or_file(filename string) {
 		}
 
 		new_path = strings.Replace(path, "original_directory", filename, -1)
-		if strings.Index(info.Name(), ".") == -1 {
+		if info.IsDir() {
 			err := os.MkdirAll(new_path, 0755)
 			if err != nil {
 				log.Println(err)
